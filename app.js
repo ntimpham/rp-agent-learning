@@ -31,7 +31,6 @@ db.once('open', function() {
 //Schema exportations [DEBUGGING PURPOSE]
 var Kitten = require('./models/kitten');
 var Module = require('./models/module');
-
 var tim = new Kitten({name: "tim"});
 //console.log(tim.name);
 

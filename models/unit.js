@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var unitSchema = new Schema({	
 	unitId: String,
 	unitName: String,
-	parentOf: [String]
+	container: [module]
 });
 
 module.exports = mongoose.model('unit', unitSchema);

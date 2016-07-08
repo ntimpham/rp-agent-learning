@@ -7,19 +7,12 @@ var moduleSchema = new Schema({
 	moduleName: String,
 	//------------------------
 	//	nodeIndex: Number,
-	//	nodePrerequisite: { score: Number, courseId: String, nodeIndex: Number },
+	//	nodePrerequisite: { score: Number, moduleId: String, nodeIndex: Number },
 	//	content: { title: String, body: String, links: String, quizId: String },
-	//	type: String
-	//------------------------
-	insideNode: [Schema.Types.Mixed]
+	//	type: String  -> quiz || learning (not applicable)
+ 	//------------------------
+	insideNode: Schema.Types.Mixed,
+
 });
 
-moduleSchema.path('moduleId')
-	.get(function(value) {
-		return value;
-	})
-	.set(function(value) {
-		return value;
-	});
-	
 module.exports = mongoose.model('module', moduleSchema);
