@@ -31,6 +31,7 @@ db.once('open', function() {
 //Schema exportations [DEBUGGING PURPOSE]
 var Kitten = require('./models/kitten');
 var Module = require('./models/module');
+
 var tim = new Kitten({name: "tim"});
 //console.log(tim.name);
 
@@ -53,7 +54,7 @@ var mod = new Module({
                   }
     ]
 });
-
+/*
 console.log("Node Summary:");
 console.log(mod);
 console.log("----------------");
@@ -63,7 +64,7 @@ console.log("---------------");
 console.log("Node 1:");
 console.log(mod.insideNode[1]);
 console.log("test");
-
+*/
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));

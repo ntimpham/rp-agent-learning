@@ -1,6 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var Node = new Schema({
+	nodeIndex: Number,
+	nodePrerequisite: Object,
+	content: Object
+})
+
 var moduleSchema = new Schema({
 	
 	moduleId: String,
@@ -11,7 +17,7 @@ var moduleSchema = new Schema({
 	//	content: { title: String, body: String, links: String, quizId: String },
 	//	type: String  -> quiz || learning (not applicable)
  	//------------------------
-	insideNode: Schema.Types.Mixed,
+	insideNode: [Node],
 
 });
 

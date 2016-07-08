@@ -25,8 +25,17 @@ router.post('/modules', function(req, res) {
     var module = new Module();
     module.moduleId = req.body.moduleId;
     module.moduleName = req.body.moduleName;
-    module.insideNode.push(req.body.insideNode);
-    module.moduleType = req.body.moduleType;
+
+    //module.insideNode.push(req.body.insideNode);
+  	//console.log(req.body.insideNode);
+  	//console.log(req.body.insideNode.length)
+
+  	for(var i = 0; i < req.body.insideNode.length; i++)
+  	{
+  		console.log("Added index: " + i);
+  		module.insideNode.push(req.body.insideNode[i]);
+  	}
+
     module.save(function(err) {
         if (err) {
             res.send(err);
@@ -67,18 +76,32 @@ router.put('/modules/update/:moduleId/node/:nodeIndex', function(req, res) {
     Module.findOne({
         moduleId: req.params.moduleId
     }, function(err, module) {
-        console.log(module);
+        
         if (err) {
             res.send(err);
         }
 
-        //TO BE FIXED
-        console.log(req.params.nodeIndex);
-        console.log(module.insideNode);
-
-        if(req.body.moduleType){
-        	module.moduleType = req.body.moduleType;
+        if(req.body.nodeIndex){
+        //	module.insideNode[req.params.nodeIndex].nodeIndex = req.body.nodeIndex;	
+        	console.log("djole");
         }
+        
+        //console.log(req.body.nodeIndex);
+        //console.log(req.body.title);
+        var test = { 
+        				title: "test",
+        				body: "test",
+        				links: "test"
+        		   };
+        console.log(req.body.title);
+        console.log(module.insideNode[req.params.nodeIndex].content.title);
+        module.insideNode[req.params.nodeIndex].content = test;
+        
+        //module.insideNode[req.params.nodeIndex].content.title = req.body.contentTitle; 
+
+
+        //module.insideNode[req.params.nodeIndex].nodeIndex = 55;//req.params.nodeIndex;
+        //console.log(module.insideNode[req.params.nodeIndex].content.title);
 
         module.save(function(err) {
             if (err) {
