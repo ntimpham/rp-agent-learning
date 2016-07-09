@@ -5,6 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var session = require('express-session');
 
 //Routing files
 var routes = require('./routes/index');
@@ -32,39 +35,7 @@ db.once('open', function() {
 var Kitten = require('./models/kitten');
 var Module = require('./models/module');
 
-var tim = new Kitten({name: "tim"});
-//console.log(tim.name);
 
-var mod = new Module({
-    moduleId: "RP2016",
-    moduleName: "Make the perfect sandwich!",
-    insideNode: [
-                  {
-                    nodeIndex: 0,
-                    nodePrerequisites: { score: null, courseId: null, nodeIndex: null},
-                    content: { title: "Les temps sont durs", body:"just add fkn tomato", links: "none"},
-                    type: "Lesson"
-                  },
-
-                  {
-                    nodeIndex: 1,
-                    nodePrerequisites: { score: true, courseId: "RP2016", nodeIndex: 0},
-                    content: { title: "What is the special ing", body:"do it pls", links: "none", quizId: "QRP2016"},
-                    type: "Quiz"
-                  }
-    ]
-});
-/*
-console.log("Node Summary:");
-console.log(mod);
-console.log("----------------");
-console.log("Node 0:")
-console.log(mod.insideNode[0]);
-console.log("---------------");
-console.log("Node 1:");
-console.log(mod.insideNode[1]);
-console.log("test");
-*/
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -73,6 +44,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Passport related
+app.use(session({secret: 'keyboard cat'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// passport config
+var Account = require('./models/account');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
 //Routing files
 app.use('/', routes);
