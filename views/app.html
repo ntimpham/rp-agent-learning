@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RP Training Drawer</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="bootstrap.js"></script>
+    <script src="https://gojs.net/latest/release/go-debug.js"></script>
+    <script src="./app.js"></script>
+</head>
+
+<body>
+
+    <div class="">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">brillint</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <!-- The DIV for a Diagram needs an explicit size or else we won't see anything.
+           In this case we also add a border to help see the edges. -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div id="toolbar" style="width:100%;">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Load Training <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" id="loadContent">New Agent - General</a></li>
+                            <li><a href="#">New Agent - Comcast</a></li>
+                            <li><a href="#">New Agent - Windstream</a></li>
+                            <li><a href="#">Handling Buttheads 101</a></li>
+                        </ul>
+                    </div>
+                    <span style="display: inline-block; vertical-align: top; padding: 5px;">
+                  <div class="palettezone">
+                    <span class="draggable" draggable="true">Module</span>
+                    <span class="draggable" draggable="true">Learning Material</span>
+                    <span class="draggable" draggable="true">Quiz</span>
+                </div>
+                </span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div id="myDiagramDiv" style="border: solid 1px blue; width:100%; height:500px"></div>
+        </div>
+    </div>
+
+    </div>
+
+</body>
+
+</html>
