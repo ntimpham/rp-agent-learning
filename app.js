@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 //Routing files
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var api = require('./routes/api');
 
 var app = express();
 
@@ -29,9 +30,41 @@ db.once('open', function() {
 
 //Schema exportations [DEBUGGING PURPOSE]
 var Kitten = require('./models/kitten');
-var tim = new Kitten({name: "tim"});
-console.log(tim.name);
+var Module = require('./models/module');
 
+var tim = new Kitten({name: "tim"});
+//console.log(tim.name);
+
+var mod = new Module({
+    moduleId: "RP2016",
+    moduleName: "Make the perfect sandwich!",
+    insideNode: [
+                  {
+                    nodeIndex: 0,
+                    nodePrerequisites: { score: null, courseId: null, nodeIndex: null},
+                    content: { title: "Les temps sont durs", body:"just add fkn tomato", links: "none"},
+                    type: "Lesson"
+                  },
+
+                  {
+                    nodeIndex: 1,
+                    nodePrerequisites: { score: true, courseId: "RP2016", nodeIndex: 0},
+                    content: { title: "What is the special ing", body:"do it pls", links: "none", quizId: "QRP2016"},
+                    type: "Quiz"
+                  }
+    ]
+});
+/*
+console.log("Node Summary:");
+console.log(mod);
+console.log("----------------");
+console.log("Node 0:")
+console.log(mod.insideNode[0]);
+console.log("---------------");
+console.log("Node 1:");
+console.log(mod.insideNode[1]);
+console.log("test");
+*/
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -44,6 +77,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Routing files
 app.use('/', routes);
 app.use('/users', users);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
