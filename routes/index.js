@@ -10,28 +10,33 @@ router.get('/', function (req, res) {
       res.render('index', { user : req.user });
   });
 
+/*
 router.get('/register', function(req, res) {
       res.render('register', { });
   });
+*/
 
 router.post('/register', function(req, res) {
     Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
         if (err) {
-            return res.render('register', { account : account });
+        	res.redirect('/');
+            return res.render('index', { message: "Oops, the username is already taken!" });
         }
 
         passport.authenticate('local')(req, res, function () {
-          res.redirect('/');
+          res.redirect('home');
         });
     });
   });
 
+/*
 router.get('/login', function(req, res) {
       res.render('login', { user : req.user });
   });
+*/
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
-      res.redirect('/');
+      res.redirect('home');
   });
 
 router.get('/logout', function(req, res) {
@@ -42,6 +47,10 @@ router.get('/logout', function(req, res) {
 router.get('/ping', function(req, res){
       res.send("pong!", 200);
  });
+
+router.get('/home', function(req, res) {
+      res.render('home', { user : req.user });
+  });
 
 
 
