@@ -44,7 +44,9 @@ router.get('/stats', function(req, res) {
       res.render('stats', { user : req.user });
   });
 
-
+router.get('/skarve', function(req, res) {
+      res.render('skarve', { user : req.user });
+  });
 
 
 module.exports = router;
