@@ -40,6 +40,11 @@ router.get('/home', function(req, res) {
       res.render('home', { user : req.user });
   });
 
+router.get('/stats', function(req, res) {
+      res.render('stats', { user : req.user });
+  });
+
+
 
 
 module.exports = router;
