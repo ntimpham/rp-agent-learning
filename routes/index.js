@@ -37,15 +37,15 @@ router.get('/ping', function(req, res){
  });
 
 router.get('/home', function(req, res) {
-      res.render('home', { user : req.user });
+      res.render('home', { user : req.user, tab_title : "Home" });
   });
 
 router.get('/stats', function(req, res) {
-      res.render('stats', { user : req.user });
+      res.render('stats', { user : req.user, tab_title : "Statistics" });
   });
 
 router.get('/skarve', function(req, res) {
-      res.render('skarve', { user : req.user });
+      res.render('skarve', { user : req.user, tab_title : "H A T C H" });
   });
 
 
