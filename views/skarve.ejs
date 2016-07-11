@@ -1,4 +1,8 @@
+<% if(user.username == "Admin") { %>
 <% include ./top %>
+<%} else {%>
+<% include ./trainee %>
+<%}%>
 
     <link rel="stylesheet" type="text/css" href="css/skarve.css">
     <script src="js/app.js"></script>

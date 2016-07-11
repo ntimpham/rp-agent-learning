@@ -1,0 +1,114 @@
+<% if(user.username == "Admin") { %>
+<% include ./top %>
+<%} else {%>
+<% include ./trainee %>
+<%}%>
+
+<div class="x_title">
+                    <h2>Courses Overview<small></small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="x_content">
+
+                    <div class="table-responsive">
+                      <table class="table table-striped jambo_table bulk_action">
+                        <thead>
+                          <tr class="headings">
+                            <th>
+                              <input type="checkbox" id="check-all" class="flat">
+                            </th>
+                            <th class="column-title">Course ID</th>
+                            <th class="column-title">Course Name</th>
+                            <th class="column-title">Progress </th>
+                            <th class="column-title">Status </th>
+                            <th class="column-title">Partner</th>
+                            <th class="column-title no-link last"><span class="nobr">Action</span>
+                            </th>
+                            <th class="bulk-actions" colspan="7">
+                              <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                            </th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="even pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">COMC101</td>
+                            <td class=" ">Comcast Introductory Course</td>
+                            <td class=" ">100%</i></td>
+
+                            <td class=" ">Complete</td>
+                            <td class="a-right a-right ">Comcast</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
+                          <tr class="odd pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">ADAR101</td>
+                            <td class=" ">Adar Introductory Course</td>
+                            <td class=" ">100%</i>
+                            </td>
+
+                            <td class=" ">Complete</td>
+                            <td class="a-right a-right ">Adar</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
+                          <tr class="odd pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">ROG101</td>
+                            <td class=" ">Rogers Introductory Course</td>
+                            <td class=" ">100%</i>
+                            </td>
+
+                            <td class=" ">Complete</td>
+                            <td class="a-right a-right ">Rogers</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
+
+                          <tr class="odd pointer">
+                            <td class="a-center ">
+                              <input type="checkbox" class="flat" name="table_records">
+                            </td>
+                            <td class=" ">RP101</td>
+                            <td class=" ">Radialpoint Introductory Course</td>
+                            <td class=" ">0%</i>
+                            </td>
+
+                            <td class=" ">Not Started</td>
+                            <td class="a-right a-right ">Radialpoint</td>
+                            <td class=" last"><a href="#">View</a>
+                            </td>
+                          </tr>
+
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+
+<% include ./bottom %>
