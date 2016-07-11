@@ -71,5 +71,9 @@ router.get('/course', function(req, res) {
       res.render('course', { user : req.user, tab_title : "H A T C H" });
   });
 
+router.get('/PassOrFail', function(req, res) {
+      res.render('PassOrFail', { user : req.user, tab_title : "H A T C H" });
+  });
+
 
 module.exports = router;
