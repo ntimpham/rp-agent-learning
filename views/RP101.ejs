@@ -1,0 +1,79 @@
+<% if(user.username == "Admin") { %>
+<% include ./top %>
+<%} else {%>
+<% include ./trainee %>
+<%}%>
+
+<div class="container">
+  <h3>Radialpoint Introductory Course - RP101</h3>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="collapse" data-target="#module1">
+      <div class="panel-title">
+        <h4>100% True Facts About Radialpoint</h4>
+      </div>
+    </div>
+    <div id="module1" class="collapse">
+      <div class="panel-body" style="font-size:1.5em">
+        Radialpoint has absolutely ZERO competitors! Why? Because Tim and Benny are intimidating.
+      </br/>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="collapse" data-target="#quiz1">
+      <div class="panel-title">
+        <h4>Quiz <span class="label label-success hidden" id="complete">Complete</span></h4>
+      </div>
+    </div>
+    <div id="quiz1" class="collapse">
+      <div class="panel-body">
+        <div style="font-size:1.5em">
+          Should the men's bathroom have a divider between the two urinals?
+        </div>
+        <br/>
+        <div class="list-group" style="width:100px">
+          <button type="button" class="list-group-item" style="text-align:center;width:100px" id="yes">Yes</button>
+          <button type="button" class="list-group-item" style="text-align:center;width:100px" id="no">No</button>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <button type="button" class="btn btn-default" id="submit">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <a href="/course" class="hidden" id="done">
+    <div class="btn btn-default">
+      Done
+    </div>
+  </a>
+</div>
+
+<style>
+  .title_left {
+    width: 0px !important;
+  }
+</style>
+
+<script>
+$("document").ready(function() {
+  $("#yes").click(function() {
+    $("#yes").addClass("active");
+    $("#no").removeClass("active");
+  });
+
+  $("#no").click(function() {
+    $("#yes").removeClass("active");
+    $("#no").addClass("active");
+  });
+
+  $("#submit").click(function() {
+    $("#complete").removeClass("hidden");
+    $("#done").removeClass("hidden");
+  });
+});
+</script>
+
+<% include ./bottom %>

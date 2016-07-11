@@ -46,29 +46,51 @@ function initDiagram() {
           toLinkableDuplicates: false
         },
         new go.Binding("fill", "color")),
-        _G(go.Panel, "Table",
-          { defaultAlignment: go.Spot.Left, margin: 4, cursor: "move" },
-          _G(go.RowColumnDefinition, { column: 1, width: 4 }),
-          _G(go.TextBlock,
-            { row: 0, column: 0, columnSpan: 3, alignment: go.Spot.Center },
-            { font: "bold 12pt sans-serif" },
-            new go.Binding("text", "text")),
-          _G(go.TextBlock, "Index: ",
-            { row: 1, column: 0 },
-            { font: "bold 8pt sans-serif" }),
-          _G(go.TextBlock,
-            { row: 1, column: 2 },
-            { font: "8pt sans-serif" },
-            new go.Binding("text", "key")),
-          _G(go.TextBlock, "Title: ",
-            { row: 2, column: 0 },
-            { font: "bold 8pt sans-serif" }),
-          _G(go.TextBlock,
-            { row: 3, column: 0 },
-            { font: "8pt sans-serif" },
-            new go.Binding("text", "title"))
-        ),
-      { // this tooltip Adornment is shared by all nodes
+      _G(go.Panel, "Table", {
+          defaultAlignment: go.Spot.Left,
+          margin: 4,
+          cursor: "move"
+        },
+        _G(go.RowColumnDefinition, {
+          column: 1,
+          width: 4
+        }),
+        _G(go.TextBlock, {
+            row: 0,
+            column: 0,
+            columnSpan: 3,
+            alignment: go.Spot.Center
+          }, {
+            font: "bold 12pt sans-serif"
+          },
+          new go.Binding("text", "text")),
+        _G(go.TextBlock, "Index: ", {
+          row: 1,
+          column: 0
+        }, {
+          font: "bold 8pt sans-serif"
+        }),
+        _G(go.TextBlock, {
+            row: 1,
+            column: 2
+          }, {
+            font: "8pt sans-serif"
+          },
+          new go.Binding("text", "key")),
+        _G(go.TextBlock, "Title: ", {
+          row: 2,
+          column: 0
+        }, {
+          font: "bold 8pt sans-serif"
+        }),
+        _G(go.TextBlock, {
+            row: 3,
+            column: 0
+          }, {
+            font: "8pt sans-serif"
+          },
+          new go.Binding("text", "title"))
+      ), { // this tooltip Adornment is shared by all nodes
         toolTip: _G(go.Adornment, "Auto",
           _G(go.Shape, {
             fill: "#FFFFCC"
@@ -280,13 +302,11 @@ function dragDrop() {
       } else if (dragged.textContent === "Learning") {
         shape = "RoundedRectangle";
         color = "lightgreen";
-      }
-      else if (dragged.textContent === "Quiz") {
+      } else if (dragged.textContent === "Quiz") {
         shape = "StopSign";
         color = "pink"
         angle = 30;
-      }
-      else shape = "NotAllowed";
+      } else shape = "NotAllowed";
 
       myDiagram.startTransaction('new node');
       myDiagram.model.addNodeData({
@@ -435,6 +455,43 @@ function loadContent(event) {
 }
 
 
+// ========================================================================================================================= loadRP101
+function loadRP101() {
+  var nodeDataArray = [{
+    "title": "100% True Facts About Radialpoint",
+    "description": "Radialpoint has absolutely ZERO competitors! Why? Because Tim and Benny are intimidating.",
+    "link": "TimAndBennyAreAwesome.com",
+    "time": "1 hour",
+    "text": "Learning",
+    "fig": "RoundedRectangle",
+    "isGroup": false,
+    "color": "lightgreen",
+    "key": 1,
+    "group": -3
+  }, {
+    "title": "Do you really think you know Radialpoint?",
+    "text": "Quiz",
+    "fig": "StopSign",
+    "isGroup": false,
+    "color": "pink",
+    "angle": 30,
+    "key": 2,
+    "group": -3
+  }, {
+    "text": "Radialpoint Introductory Course",
+    "isGroup": true,
+    "color": "blue",
+    "key": -3
+  }];
+
+  var linkDataArray = [{
+    "from": 1,
+    "to": 2
+  }];
+  myDiagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+}
+
+
 // ========================================================================================================================= LOADING POINT
 $("document").ready(function() {
   initDiagram();
@@ -443,6 +500,10 @@ $("document").ready(function() {
 
   $("#loadContent").click(function(event) {
     loadContent(event);
+  });
+
+  $("#loadRP101").click(function(event) {
+    loadRP101(event);
   });
 });
 
@@ -460,7 +521,7 @@ var partContextMenu =
         else if (part instanceof go.Group) console.log("Group", part.data);
         else {
           if (part.data.text === "Learning")
-           addLearningProperties(part.data.title, part.data.description, part.data.link, part.data.time);
+            addLearningProperties(part.data.title, part.data.description, part.data.link, part.data.time);
           else addQuizProperties(part.data.title, part.data.score, part.data.time, part.data.question, part.data.answers);
         }
         showProperties();
@@ -500,7 +561,7 @@ function hideProperties() {
 }
 
 function addLearningProperties(title, description, link, time) {
-  var p = $( $("#learningTemplate").html() );
+  var p = $($("#learningTemplate").html());
 
   p.find("#title").val(title);
   p.find("#description").val(description);
@@ -516,7 +577,7 @@ function addLearningProperties(title, description, link, time) {
 }
 
 function addQuizProperties(title, score, time, question, answers) {
-  var p = $( $("#quizTemplate").html() );
+  var p = $($("#quizTemplate").html());
 
   p.find("#title").val(title);
   p.find("#score").val(score);
@@ -549,7 +610,7 @@ function getAnswersTemplate() {
 }
 
 function addLinkProperties() {
-  var p = $( $("#linkTemplate").html() );
+  var p = $($("#linkTemplate").html());
 
   p.find("#hideProperties").click(function() {
     hideProperties();

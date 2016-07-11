@@ -24,13 +24,13 @@ router.post('/register', function(req, res) {
   });
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
-      
+
       if(req.user.username == "Admin"){
       	res.redirect('home');
       } else {
       	res.redirect('courses');
       }
-      
+
   });
 
 router.get('/logout', function(req, res) {
@@ -61,6 +61,14 @@ router.get('/courses', function(req, res) {
 
 router.get('/scoreboard', function(req, res) {
       res.render('scoreboard', { user : req.user, tab_title : "H A T C H" });
+  });
+
+router.get('/RP101', function(req, res) {
+      res.render('RP101', { user : req.user, tab_title : "H A T C H" });
+  });
+
+router.get('/course', function(req, res) {
+      res.render('course', { user : req.user, tab_title : "H A T C H" });
   });
 
 
