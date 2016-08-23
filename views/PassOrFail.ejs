@@ -1,0 +1,107 @@
+<% if(user.username == "Admin") { %>
+<% include ./top %>
+<%} else {%>
+<% include ./trainee %>
+<%}%>
+
+<div class="container">
+  <h3>Pass or Fail - POF 666</h3>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="collapse" data-target="#module1">
+      <div class="panel-title">
+        <h4>Lecture with a link</h4>
+      </div>
+    </div>
+    <div id="module1" class="collapse">
+      <div class="panel-body" style="font-size:1.5em">
+        A quick description and a link is all you need to find your way!
+        <br />
+        Links can be to tutorials on YouTube!
+        <br/>
+        <u><a href="https://www.youtube.com/yt/about/" target="_blank">Lesson</a></u>
+      </br/>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="collapse" data-target="#quiz1">
+      <div class="panel-title">
+        <h4>Quiz <span class="label label-success hidden" id="complete">Complete</span></h4>
+      </div>
+    </div>
+    <div id="quiz1" class="collapse">
+      <div class="panel-body">
+        <div style="font-size:1.5em">
+          Do you need more training?
+        </div>
+        <br/>
+        <div class="list-group" style="width:100px">
+          <button type="button" class="list-group-item" style="text-align:center;width:100px" id="yes">Yes</button>
+          <button type="button" class="list-group-item" style="text-align:center;width:100px" id="no">No</button>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <button type="button" class="btn btn-default" id="submit">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Remedial Content</h4>
+        </div>
+        <div class="modal-body" style="font-size:1.5em">
+          <p>You've asked for it! So here it is:</p>
+          <u><a href="https://www.google.ca/" target="_blank">Extra Training</a></u>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <a href="/course" class="hidden" id="done">
+    <div class="btn btn-default">
+      Done
+    </div>
+  </a>
+</div>
+
+<style>
+  .title_left {
+    width: 0px !important;
+  }
+</style>
+
+<script>
+$("document").ready(function() {
+  $("#yes").click(function() {
+    $("#yes").addClass("active");
+    $("#no").removeClass("active");
+  });
+
+  $("#no").click(function() {
+    $("#yes").removeClass("active");
+    $("#no").addClass("active");
+  });
+
+  $("#submit").click(function() {
+    $("#complete").removeClass("hidden");
+    $("#done").removeClass("hidden");
+    if ($("#yes").hasClass("active")) {
+      $("#myModal").modal();
+    }
+  });
+});
+</script>
+
+<% include ./bottom %>
